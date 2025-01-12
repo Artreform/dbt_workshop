@@ -1,0 +1,15 @@
+services:
+  pg-dwh:
+    image: postgres:15-alpine
+    env_file:
+      - env/dwh.env
+    container_name: pg-dwh
+    volumes:
+      - "./dwh_data:/var/lib/postgresql/data:rw"
+    ports:
+      - 5435:5432
+    networks:
+      - all-in-one
+
+networks:
+  all-in-one:
